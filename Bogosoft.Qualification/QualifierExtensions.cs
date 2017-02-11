@@ -21,17 +21,16 @@ namespace Bogosoft.Qualification
         /// <summary>Add a conjunctive (AND) qualifier to the current qualifier.</summary>
         /// <typeparam name="T">The type of the object to qualify.</typeparam>
         /// <param name="qualifier">The current qualifier.</param>
-        /// <param name="lambda">
-        /// A qualifier (in the form of an anonymous function) to serve as the right-hand
-        /// side of the operation.
+        /// <param name="delegate">
+        /// A qualifier (in the form of a delegate) to serve as the right-hand side of the operation.
         /// </param>
         /// <returns>
         /// A conjunctive qualifier consisting of the current qualifier as the left-hand side
         /// of the operation and an additional qualifier as the right-hand side.
         /// </returns>
-        public static IQualify<T> And<T>(this IQualify<T> qualifier, Func<T, Boolean> lambda)
+        public static IQualify<T> And<T>(this IQualify<T> qualifier, Func<T, bool> @delegate)
         {
-            return new ConjunctiveQualifier<T>(qualifier, new DelegateQualifier<T>(lambda));
+            return new ConjunctiveQualifier<T>(qualifier, new DelegateQualifier<T>(@delegate));
         }
 
         /// <summary>Negate the current qualifier.</summary>
@@ -59,17 +58,16 @@ namespace Bogosoft.Qualification
         /// <summary>Add a disjunctive (OR) qualifier to the current qualifier.</summary>
         /// <typeparam name="T">The type of the object to qualify.</typeparam>
         /// <param name="qualifier">The current qualifier.</param>
-        /// <param name="lambda">
-        /// A constraint (in the form of an anonymous function) to serve as the right-hand
-        /// side of the operation.
+        /// <param name="delegate">
+        /// A constraint (in the form of a delegate) to serve as the right-hand side of the operation.
         /// </param>
         /// <returns>
         /// A disjunctive qualifier consisting of the current qualifier as the left-hand side
         /// of the operation and an additional qualifier as the right-hand side.
         /// </returns>
-        public static IQualify<T> Or<T>(this IQualify<T> qualifier, Func<T, Boolean> lambda)
+        public static IQualify<T> Or<T>(this IQualify<T> qualifier, Func<T, Boolean> @delegate)
         {
-            return new DisjunctiveQualifier<T>(qualifier, new DelegateQualifier<T>(lambda));
+            return new DisjunctiveQualifier<T>(qualifier, new DelegateQualifier<T>(@delegate));
         }
     }
 }
