@@ -91,6 +91,46 @@ namespace Bogosoft.Qualification
         }
 
         /// <summary>
+        /// Add a disjunctive (OR) qualifier to the current qualifier.
+        /// </summary>
+        /// <typeparam name="T">The type of the object to be qualified.</typeparam>
+        /// <param name="left">The current <see cref="IQualifyAsync{T}"/> implementation.</param>
+        /// <param name="delegate">
+        /// A qualifier (in the form of a delegate) to serve as the right-hand side of the operation.
+        /// Since the given delegate does not accept a <see cref="CancellationToken"/>, it will be wrapped in
+        /// one that does, and <see cref="CancellationToken.ThrowIfCancellationRequested"/> will be called
+        /// before the given delegate is invoked.
+        /// </param>
+        /// <returns>
+        /// A disjunctive qualifier consisting of the current qualifier as the left-hand side
+        /// of the operation and an additional qualifier as the right-hand side.
+        /// </returns>
+        public static IQualifyAsync<T> Or<T>(this IQualifyAsync<T> left, Func<T, Task<bool>> @delegate)
+        {
+            return new DisjunctiveQualifierAsync<T>(left, new DelegateQualifierAsync<T>(@delegate));
+        }
+
+        /// <summary>
+        /// Add a disjunctive (OR) qualifier to the current qualifier.
+        /// </summary>
+        /// <typeparam name="T">The type of the object to be qualified.</typeparam>
+        /// <param name="left">The current <see cref="IQualifyAsync{T}"/> implementation.</param>
+        /// <param name="delegate">
+        /// A qualifier (in the form of a delegate) to serve as the right-hand side of the operation.
+        /// </param>
+        /// <returns>
+        /// A disjunctive qualifier consisting of the current qualifier as the left-hand side
+        /// of the operation and an additional qualifier as the right-hand side.
+        /// </returns>
+        public static IQualifyAsync<T> Or<T>(
+            this IQualifyAsync<T> left,
+            Func<T, CancellationToken, Task<bool>> @delegate
+            )
+        {
+            return new DisjunctiveQualifierAsync<T>(left, new DelegateQualifierAsync<T>(@delegate));
+        }
+
+        /// <summary>
         /// Qualify an object. Calling this method is equivalent to calling
         /// <see cref="IQualifyAsync{T}.QualifyAsync(T, CancellationToken)"/> with a value of
         /// <see cref="CancellationToken.None"/>.
