@@ -31,7 +31,7 @@ namespace Bogosoft.Qualification
         /// </returns>
         public static IQualify<T> And<T>(this IQualify<T> qualifier, Func<T, Boolean> lambda)
         {
-            return new ConjunctiveQualifier<T>(qualifier, new LambdaQualifier<T>(lambda));
+            return new ConjunctiveQualifier<T>(qualifier, new DelegateQualifier<T>(lambda));
         }
 
         /// <summary>Negate the current qualifier.</summary>
@@ -69,7 +69,7 @@ namespace Bogosoft.Qualification
         /// </returns>
         public static IQualify<T> Or<T>(this IQualify<T> qualifier, Func<T, Boolean> lambda)
         {
-            return new DisjunctiveQualifier<T>(qualifier, new LambdaQualifier<T>(lambda));
+            return new DisjunctiveQualifier<T>(qualifier, new DelegateQualifier<T>(lambda));
         }
     }
 }

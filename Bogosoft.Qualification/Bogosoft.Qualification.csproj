@@ -45,7 +45,7 @@
     <Compile Include="ConjunctiveQualifier.cs" />
     <Compile Include="QualifierExtensions.cs" />
     <Compile Include="DisjunctiveQualifier.cs" />
-    <Compile Include="LambdaQualifier.cs" />
+    <Compile Include="DelegateQualifier.cs" />
     <Compile Include="IQualify.cs" />
     <Compile Include="NegatedQualifier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
