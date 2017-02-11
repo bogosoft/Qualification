@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConjunctiveQualifier.cs" />
+    <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="QualifierExtensions.cs" />
     <Compile Include="DisjunctiveQualifier.cs" />
     <Compile Include="DelegateQualifier.cs" />
