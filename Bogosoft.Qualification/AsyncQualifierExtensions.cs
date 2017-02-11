@@ -50,7 +50,9 @@ namespace Bogosoft.Qualification
         }
 
         /// <summary>
-        /// Qualify an object.
+        /// Qualify an object. Calling this method is equivalent to calling
+        /// <see cref="IQualifyAsync{T}.QualifyAsync(T, CancellationToken)"/> with a value of
+        /// <see cref="CancellationToken.None"/>.
         /// </summary>
         /// <typeparam name="T">The type of the object to be qualified.</typeparam>
         /// <param name="qualifier">The current <see cref="IQualifyAsync{T}"/> implementation.</param>

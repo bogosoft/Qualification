@@ -45,6 +45,7 @@
     <Compile Include="AsyncQualifierExtensions.cs" />
     <Compile Include="ConjunctiveQualifierAsync.cs" />
     <Compile Include="ConjunctiveQualifier.cs" />
+    <Compile Include="DelegateQualifierAsync.cs" />
     <Compile Include="DisjunctiveQualifierAsync.cs" />
     <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="IQualifyAsync.cs" />
