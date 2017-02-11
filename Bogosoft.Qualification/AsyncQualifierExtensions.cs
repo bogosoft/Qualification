@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Bogosoft.Qualification
@@ -21,6 +22,46 @@ namespace Bogosoft.Qualification
         public static IQualifyAsync<T> And<T>(this IQualifyAsync<T> left, IQualifyAsync<T> right)
         {
             return new ConjunctiveQualifierAsync<T>(left, right);
+        }
+
+        /// <summary>
+        /// Add a conjunctive (AND) qualifier to the current qualifier.
+        /// </summary>
+        /// <typeparam name="T">The type of the object to be qualified.</typeparam>
+        /// <param name="left">The current <see cref="IQualifyAsync{T}"/> implementation.</param>
+        /// <param name="delegate">
+        /// A qualifier (in the form of a delegate) to serve as the right-hand side of the operation.
+        /// Since the given delegate does not accept a <see cref="CancellationToken"/>, it will be wrapped in
+        /// one that does, and <see cref="CancellationToken.ThrowIfCancellationRequested"/> will be called
+        /// before the given delegate is invoked.
+        /// </param>
+        /// <returns>
+        /// A conjunctive qualifier consisting of the current qualifier as the left-hand side
+        /// of the operation and an additional qualifier as the right-hand side.
+        /// </returns>
+        public static IQualifyAsync<T> And<T>(this IQualifyAsync<T> left, Func<T, Task<bool>> @delegate)
+        {
+            return new ConjunctiveQualifierAsync<T>(left, new DelegateQualifierAsync<T>(@delegate));
+        }
+
+        /// <summary>
+        /// Add a conjunctive (AND) qualifier to the current qualifier.
+        /// </summary>
+        /// <typeparam name="T">The type of the object to be qualified.</typeparam>
+        /// <param name="left">The current <see cref="IQualifyAsync{T}"/> implementation.</param>
+        /// <param name="delegate">
+        /// A qualifier (in the form of a delegate) to serve as the right-hand side of the operation.
+        /// </param>
+        /// <returns>
+        /// A conjunctive qualifier consisting of the current qualifier as the left-hand side
+        /// of the operation and an additional qualifier as the right-hand side.
+        /// </returns>
+        public static IQualifyAsync<T> And<T>(
+            this IQualifyAsync<T> left,
+            Func<T, CancellationToken, Task<bool>> @delegate
+            )
+        {
+            return new ConjunctiveQualifierAsync<T>(left, new DelegateQualifierAsync<T>(@delegate));
         }
 
         /// <summary>
