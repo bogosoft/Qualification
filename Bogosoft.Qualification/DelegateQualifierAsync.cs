@@ -50,9 +50,9 @@ namespace Bogosoft.Qualification
         /// <returns>
         /// A value indicating whether or not the given object is qualified.
         /// </returns>
-        public async Task<bool> QualifyAsync(T @object, CancellationToken token)
+        public Task<bool> QualifyAsync(T @object, CancellationToken token)
         {
-            return await @delegate.Invoke(@object, token);
+            return @delegate.Invoke(@object, token);
         }
     }
 }

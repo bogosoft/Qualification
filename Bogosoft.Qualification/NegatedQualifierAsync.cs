@@ -14,7 +14,7 @@ namespace Bogosoft.Qualification
 
         public async Task<bool> QualifyAsync(T @object, CancellationToken token)
         {
-            return false == await qualifier.QualifyAsync(@object, token);
+            return false == await qualifier.QualifyAsync(@object, token).ConfigureAwait(false);
         }
     }
 }

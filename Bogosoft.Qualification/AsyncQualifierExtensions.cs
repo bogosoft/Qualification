@@ -141,9 +141,9 @@ namespace Bogosoft.Qualification
         /// <returns>
         /// A value indicating whether or not the given object is qualified.
         /// </returns>
-        public static async Task<bool> QualifyAsync<T>(this IQualifyAsync<T> qualifier, T @object)
+        public static Task<bool> QualifyAsync<T>(this IQualifyAsync<T> qualifier, T @object)
         {
-            return await qualifier.QualifyAsync(@object, CancellationToken.None);
+            return qualifier.QualifyAsync(@object, CancellationToken.None);
         }
     }
 }
