@@ -1,16 +1,26 @@
 ﻿using NUnit.Framework;
 using Should;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Bogosoft.Qualification.Tests
 {
     [TestFixture, Category("Unit")]
     public class UnitTests
     {
+        static bool ContainsOddNumbers(IEnumerable<int> ints)
+        {
+            foreach(var x in ints)
+            {
+                if(x % 2 == 0)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         [TestCase]
         public void CanFilterSequenceByQualifier()
         {
@@ -19,6 +29,20 @@ namespace Bogosoft.Qualification.Tests
             var ints = Enumerable.Range(0, length);
 
             ints.Where(new EvenIntegerQualifier()).Count().ShouldEqual(length / 2);
+        }
+
+        [TestCase]
+        public void DelegateQualifierQualifiesAsExpected()
+        {
+            var length = 64;
+
+            var ints = Enumerable.Range(0, length);
+
+            ContainsOddNumbers(ints).ShouldBeTrue();
+
+            var qualifier = new DelegateQualifier<IEnumerable<int>>(ContainsOddNumbers);
+
+            qualifier.Qualify(ints).ShouldBeTrue();
         }
     }
 }
