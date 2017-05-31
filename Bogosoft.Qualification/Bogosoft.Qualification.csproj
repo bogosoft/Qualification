@@ -50,6 +50,7 @@
     <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="IQualifyAsync.cs" />
     <Compile Include="NegatedQualifierAsync.cs" />
+    <Compile Include="Qualifier.cs" />
     <Compile Include="QualifierExtensions.cs" />
     <Compile Include="DisjunctiveQualifier.cs" />
     <Compile Include="DelegateQualifier.cs" />

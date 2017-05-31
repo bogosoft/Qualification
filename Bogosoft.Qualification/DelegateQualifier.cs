@@ -8,13 +8,13 @@ namespace Bogosoft.Qualification
     /// <typeparam name="T">The type of object to qualify.</typeparam>
     public sealed class DelegateQualifier<T> : IQualify<T>
     {
-        private Func<T, bool> @delegate;
+        private Qualifier<T> @delegate;
 
         /// <summary>
         /// Create a new qualifier instance with a given delegate.
         /// </summary>
         /// <param name="delegate">An anonymous function.</param>
-        public DelegateQualifier(Func<T, bool> @delegate)
+        public DelegateQualifier(Qualifier<T> @delegate)
         {
             this.@delegate = @delegate;
         }

@@ -28,7 +28,7 @@ namespace Bogosoft.Qualification
         /// A conjunctive qualifier consisting of the current qualifier as the left-hand side
         /// of the operation and an additional qualifier as the right-hand side.
         /// </returns>
-        public static IQualify<T> And<T>(this IQualify<T> qualifier, Func<T, bool> @delegate)
+        public static IQualify<T> And<T>(this IQualify<T> qualifier, Qualifier<T> @delegate)
         {
             return new ConjunctiveQualifier<T>(qualifier, new DelegateQualifier<T>(@delegate));
         }
@@ -65,7 +65,7 @@ namespace Bogosoft.Qualification
         /// A disjunctive qualifier consisting of the current qualifier as the left-hand side
         /// of the operation and an additional qualifier as the right-hand side.
         /// </returns>
-        public static IQualify<T> Or<T>(this IQualify<T> qualifier, Func<T, Boolean> @delegate)
+        public static IQualify<T> Or<T>(this IQualify<T> qualifier, Qualifier<T> @delegate)
         {
             return new DisjunctiveQualifier<T>(qualifier, new DelegateQualifier<T>(@delegate));
         }
