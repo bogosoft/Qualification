@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AsyncQualifier.cs" />
     <Compile Include="AsyncQualifierExtensions.cs" />
     <Compile Include="ConjunctiveQualifierAsync.cs" />
     <Compile Include="ConjunctiveQualifier.cs" />

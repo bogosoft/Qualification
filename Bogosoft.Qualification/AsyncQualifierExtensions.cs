@@ -10,6 +10,39 @@ namespace Bogosoft.Qualification
     public static class AsyncQualifierExtensions
     {
         /// <summary>
+        /// Qualify an object. Calling this method is equivalent to calling
+        /// <see cref="QualifyAsync{T}(AsyncQualifier{T}, T, CancellationToken)"/>
+        /// with a value of <see cref="CancellationToken.None"/>.
+        /// </summary>
+        /// <typeparam name="T">The type of the objects to qualify.</typeparam>
+        /// <param name="qualifier">The current <see cref="AsyncQualifier{T}"/> implementation.</param>
+        /// <param name="object">An object to qualify.</param>
+        /// <returns>
+        /// A value indicating whether or not object is qualified.
+        /// </returns>
+        public static Task<bool> QualifyAsync<T>(this AsyncQualifier<T> qualifier, T @object)
+        {
+            return qualifier.Invoke(@object, CancellationToken.None);
+        }
+
+        /// <summary>Qualify an object.</summary>
+        /// <typeparam name="T">The type of the objects to qualify.</typeparam>
+        /// <param name="qualifier">The current <see cref="AsyncQualifier{T}"/> implementation.</param>
+        /// <param name="object">An object to qualify.</param>
+        /// <param name="token">A <see cref="CancellationToken"/> object.</param>
+        /// <returns>
+        /// A value indicating whether or not object is qualified.
+        /// </returns>
+        public static Task<bool> QualifyAsync<T>(
+            this AsyncQualifier<T> qualifier,
+            T @object,
+            CancellationToken token
+            )
+        {
+            return qualifier.Invoke(@object, token);
+        }
+
+        /// <summary>
         /// Add a conjunctive (AND) qualifier to the current qualifier.
         /// </summary>
         /// <typeparam name="T">The type of the object to be qualified.</typeparam>
@@ -19,6 +52,7 @@ namespace Bogosoft.Qualification
         /// A conjunctive qualifier consisting of the current qualifier as the left-hand side
         /// of the operation and an additional qualifier as the right-hand side.
         /// </returns>
+
         public static IQualifyAsync<T> And<T>(this IQualifyAsync<T> left, IQualifyAsync<T> right)
         {
             return new ConjunctiveQualifierAsync<T>(left, right);
