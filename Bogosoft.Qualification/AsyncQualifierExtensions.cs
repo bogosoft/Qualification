@@ -18,9 +18,9 @@ namespace Bogosoft.Qualification
         /// A conjunctive qualifier consisting of the current qualifier as the left-hand side
         /// of the operation and an additional qualifier as the right-hand side.
         /// </returns>
-        public static AsyncQualifier<T> And<T>(this IQualifyAsync<T> current, IQualifyAsync<T> qualifier)
+        public static AsyncQualifier<T> And<T>(this AsyncQualifier<T> current, IQualifyAsync<T> qualifier)
         {
-            return new ConjunctiveQualifierAsync<T>(current.QualifyAsync, qualifier.QualifyAsync).QualifyAsync;
+            return new ConjunctiveQualifierAsync<T>(current, qualifier.QualifyAsync).QualifyAsync;
         }
 
         /// <summary>
@@ -35,20 +35,9 @@ namespace Bogosoft.Qualification
         /// A conjunctive qualifier consisting of the current qualifier as the left-hand side
         /// of the operation and an additional qualifier as the right-hand side.
         /// </returns>
-        public static AsyncQualifier<T> And<T>(this IQualifyAsync<T> current, AsyncQualifier<T> qualifier)
+        public static AsyncQualifier<T> And<T>(this AsyncQualifier<T> current, AsyncQualifier<T> qualifier)
         {
-            return new ConjunctiveQualifierAsync<T>(current.QualifyAsync, qualifier).QualifyAsync;
-        }
-
-        /// <summary>
-        /// Negate the current qualifier.
-        /// </summary>
-        /// <typeparam name="T">The type of the object to be qualified.</typeparam>
-        /// <param name="current">The current qualifier.</param>
-        /// <returns>A negation of the current qualifier.</returns>
-        public static AsyncQualifier<T> Negate<T>(this IQualifyAsync<T> current)
-        {
-            return new NegatedQualifierAsync<T>(current.QualifyAsync).QualifyAsync;
+            return new ConjunctiveQualifierAsync<T>(current, qualifier).QualifyAsync;
         }
 
         /// <summary>
@@ -72,9 +61,9 @@ namespace Bogosoft.Qualification
         /// A disjunctive qualifier consisting of the current qualifier as the left-hand side
         /// of the operation and an additional qualifier as the right-hand side.
         /// </returns>
-        public static AsyncQualifier<T> Or<T>(this IQualifyAsync<T> current, IQualifyAsync<T> qualifier)
+        public static AsyncQualifier<T> Or<T>(this AsyncQualifier<T> current, IQualifyAsync<T> qualifier)
         {
-            return new DisjunctiveQualifierAsync<T>(current.QualifyAsync, qualifier.QualifyAsync).QualifyAsync;
+            return new DisjunctiveQualifierAsync<T>(current, qualifier.QualifyAsync).QualifyAsync;
         }
 
         /// <summary>
@@ -89,9 +78,9 @@ namespace Bogosoft.Qualification
         /// A disjunctive qualifier consisting of the current qualifier as the left-hand side
         /// of the operation and an additional qualifier as the right-hand side.
         /// </returns>
-        public static AsyncQualifier<T> Or<T>(this IQualifyAsync<T> current, AsyncQualifier<T> qualifier)
+        public static AsyncQualifier<T> Or<T>(this AsyncQualifier<T> current, AsyncQualifier<T> qualifier)
         {
-            return new DisjunctiveQualifierAsync<T>(current.QualifyAsync, qualifier).QualifyAsync;
+            return new DisjunctiveQualifierAsync<T>(current, qualifier).QualifyAsync;
         }
         /// <summary>
         /// Qualify an object.
