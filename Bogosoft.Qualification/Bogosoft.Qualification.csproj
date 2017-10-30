@@ -42,18 +42,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AsyncQualifier.cs" />
     <Compile Include="AsyncQualifierExtensions.cs" />
     <Compile Include="ConjunctiveQualifierAsync.cs" />
     <Compile Include="ConjunctiveQualifier.cs" />
-    <Compile Include="DelegateQualifierAsync.cs" />
     <Compile Include="DisjunctiveQualifierAsync.cs" />
     <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="IQualifyAsync.cs" />
+    <Compile Include="IQualifyAsyncExtensions.cs" />
+    <Compile Include="IQualifyExtensions.cs" />
     <Compile Include="NegatedQualifierAsync.cs" />
     <Compile Include="Qualifier.cs" />
     <Compile Include="QualifierExtensions.cs" />
     <Compile Include="DisjunctiveQualifier.cs" />
-    <Compile Include="DelegateQualifier.cs" />
     <Compile Include="IQualify.cs" />
     <Compile Include="NegatedQualifier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

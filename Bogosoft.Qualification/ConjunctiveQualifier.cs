@@ -1,21 +1,18 @@
-﻿using System;
-
-namespace Bogosoft.Qualification
+﻿namespace Bogosoft.Qualification
 {
-    internal sealed class ConjunctiveQualifier<T> : IQualify<T>
+    class ConjunctiveQualifier<T> : IQualify<T>
     {
-        private IQualify<T> left;
-        private IQualify<T> right;
+        Qualifier<T> left, right;
 
-        internal ConjunctiveQualifier(IQualify<T> left, IQualify<T> right)
+        internal ConjunctiveQualifier(Qualifier<T> left, Qualifier<T> right)
         {
             this.left = left;
             this.right = right;
         }
 
-        public Boolean Qualify(T graph)
+        public bool Qualify(T graph)
         {
-            return this.left.Qualify(graph) && this.right.Qualify(graph);
+            return left.Invoke(graph) && right.Invoke(graph);
         }
     }
 }

@@ -30,19 +30,5 @@ namespace Bogosoft.Qualification.Tests
 
             ints.Where(new EvenIntegerQualifier()).Count().ShouldEqual(length / 2);
         }
-
-        [TestCase]
-        public void DelegateQualifierQualifiesAsExpected()
-        {
-            var length = 64;
-
-            var ints = Enumerable.Range(0, length);
-
-            ContainsOddNumbers(ints).ShouldBeTrue();
-
-            var qualifier = new DelegateQualifier<IEnumerable<int>>(ContainsOddNumbers);
-
-            qualifier.Qualify(ints).ShouldBeTrue();
-        }
     }
 }
