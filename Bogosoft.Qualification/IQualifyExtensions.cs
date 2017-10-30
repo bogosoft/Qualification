@@ -49,17 +49,6 @@
         }
 
         /// <summary>
-        /// Negate the current qualifier.
-        /// </summary>
-        /// <typeparam name="T">The type of the object to qualify.</typeparam>
-        /// <param name="current">The current qualifier.</param>
-        /// <returns>A negation of the current qualifier.</returns>
-        public static IQualify<T> Negate<T>(this Qualifier<T> current)
-        {
-            return new NegatedQualifier<T>(current);
-        }
-
-        /// <summary>
         /// Add a disjunctive (OR) qualifier to the current qualifier.
         /// </summary>
         /// <typeparam name="T">The type of the object to qualify.</typeparam>
