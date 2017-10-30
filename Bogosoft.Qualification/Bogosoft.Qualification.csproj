@@ -1,73 +1,17 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2CDBF950-B752-4DEA-B090-EC1A38378BB9}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Bogosoft.Qualification</RootNamespace>
-    <AssemblyName>Bogosoft.Qualification</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\Bogosoft.Qualification.XML</DocumentationFile>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\Bogosoft.Qualification.XML</DocumentationFile>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="AsyncQualifier.cs" />
-    <Compile Include="AsyncQualifierExtensions.cs" />
-    <Compile Include="ConjunctiveQualifierAsync.cs" />
-    <Compile Include="ConjunctiveQualifier.cs" />
-    <Compile Include="DisjunctiveQualifierAsync.cs" />
-    <Compile Include="EnumerableExtensions.cs" />
-    <Compile Include="IQualifyAsync.cs" />
-    <Compile Include="IQualifyAsyncExtensions.cs" />
-    <Compile Include="IQualifyExtensions.cs" />
-    <Compile Include="NegatedQualifierAsync.cs" />
-    <Compile Include="Qualifier.cs" />
-    <Compile Include="QualifierExtensions.cs" />
-    <Compile Include="DisjunctiveQualifier.cs" />
-    <Compile Include="IQualify.cs" />
-    <Compile Include="NegatedQualifier.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Bogosoft.Qualification.nuspec" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<AssemblyVersion>1.4.0</AssemblyVersion>
+		<Authors>Clayton Roth</Authors>
+		<Company>Bogosoft</Company>
+		<Copyright>Copyright © 2017</Copyright>
+		<Description>A generic implementation of the specification pattern.</Description>
+		<FileVersion>1.4.0</FileVersion>
+		<PackageLicenseUrl>https://raw.githubusercontent.com/bogosoft/Qualification/master/LICENSE</PackageLicenseUrl>
+		<PackageProjectUrl>https://github.com/bogosoft/Qualification</PackageProjectUrl>
+		<PackageTags>specification pattern</PackageTags>
+		<RepositoryUrl>https://github.com/bogosoft/Qualification</RepositoryUrl>
+		<TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
+		<Title>Bogosoft.Qualification</Title>
+		<Version>1.4.0</Version>
+	</PropertyGroup>
 </Project>
