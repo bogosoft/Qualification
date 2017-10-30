@@ -5,9 +5,9 @@ namespace Bogosoft.Qualification
 {
     class ConjunctiveQualifierAsync<T> : IQualifyAsync<T>
     {
-        IQualifyAsync<T> left, right;
+        AsyncQualifier<T> left, right;
 
-        internal ConjunctiveQualifierAsync(IQualifyAsync<T> left, IQualifyAsync<T> right)
+        internal ConjunctiveQualifierAsync(AsyncQualifier<T> left, AsyncQualifier<T> right)
         {
             this.left = left;
             this.right = right;
@@ -15,8 +15,8 @@ namespace Bogosoft.Qualification
 
         public async Task<bool> QualifyAsync(T @object, CancellationToken token)
         {
-            return await left.QualifyAsync(@object, token).ConfigureAwait(false)
-                && await right.QualifyAsync(@object, token).ConfigureAwait(false);
+            return await left.Invoke(@object, token).ConfigureAwait(false)
+                && await right.Invoke(@object, token).ConfigureAwait(false);
         }
     }
 }

@@ -4,7 +4,8 @@ using System.Threading.Tasks;
 namespace Bogosoft.Qualification
 {
     /// <summary>
-    /// Qualify an object.
+    /// Represents the template for a method capable of asynchronously qualifying
+    /// objects of a specified type.
     /// </summary>
     /// <typeparam name="T">The type of the objects to qualify.</typeparam>
     /// <param name="object">An object to qualify.</param>

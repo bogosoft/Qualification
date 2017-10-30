@@ -2,18 +2,18 @@
 
 namespace Bogosoft.Qualification
 {
-    internal sealed class NegatedQualifier<T> : IQualify<T>
+    class NegatedQualifier<T> : IQualify<T>
     {
-        private IQualify<T> constraint;
+        Qualifier<T> qualifier;
 
-        internal NegatedQualifier(IQualify<T> constraint)
+        internal NegatedQualifier(Qualifier<T> qualifier)
         {
-            this.constraint = constraint;
+            this.qualifier = qualifier;
         }
 
         public Boolean Qualify(T graph)
         {
-            return false == this.constraint.Qualify(graph);
+            return false == qualifier.Invoke(graph);
         }
     }
 }
