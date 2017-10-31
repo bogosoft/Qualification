@@ -4,7 +4,7 @@
     /// Indicates that an implementation is capable of qualifying an object of a specified type.
     /// </summary>
     /// <typeparam name="T">The type of an object to qualify.</typeparam>
-    public interface IQualify<T>
+    public interface IQualify<in T>
     {
         /// <summary>
         /// Qualify an object.

@@ -10,5 +10,5 @@
     /// <returns>
     /// A value indicating whether or not a given object is qualified.
     /// </returns>
-    public delegate bool Qualifier<T>(T @object);
+    public delegate bool Qualifier<in T>(T @object);
 }

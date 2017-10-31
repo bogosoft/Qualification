@@ -7,7 +7,7 @@ namespace Bogosoft.Qualification
     /// Indicates that an implementation is capable of qualifying an object asyncrhonously.
     /// </summary>
     /// <typeparam name="T">The type of the object to be qualified.</typeparam>
-    public interface IQualifyAsync<T>
+    public interface IQualifyAsync<in T>
     {
         /// <summary>
         /// Qualify an object.
