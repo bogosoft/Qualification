@@ -1,23 +1,29 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<AssemblyVersion>1.5.0</AssemblyVersion>
+		<AssemblyVersion>1.5.1</AssemblyVersion>
 		<Authors>Clayton Roth</Authors>
 		<Company>Bogosoft</Company>
 		<Copyright>Copyright © 2017</Copyright>
 		<Description>A generic implementation of the specification pattern.</Description>
-		<FileVersion>1.5.0</FileVersion>
+		<FileVersion>1.5.1</FileVersion>
 		<PackageLicenseUrl>https://raw.githubusercontent.com/bogosoft/Qualification/master/LICENSE</PackageLicenseUrl>
 		<PackageProjectUrl>https://github.com/bogosoft/Qualification</PackageProjectUrl>
 		<PackageTags>specification pattern</PackageTags>
 		<RepositoryUrl>https://github.com/bogosoft/Qualification</RepositoryUrl>
 		<TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
 		<Title>Bogosoft.Qualification</Title>
-		<Version>1.5.0</Version>
+		<Version>1.5.1</Version>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
-	  <DocumentationFile>bin\Debug\netstandard2.0\Bogosoft.Qualification.xml</DocumentationFile>
+		<DocumentationFile>bin\Debug\netstandard2.0\Bogosoft.Qualification.xml</DocumentationFile>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
-	  <DocumentationFile>bin\Release\netstandard2.0\Bogosoft.Qualification.xml</DocumentationFile>
+		<DocumentationFile>bin\Release\netstandard2.0\Bogosoft.Qualification.xml</DocumentationFile>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net45|AnyCPU'">
+		<DocumentationFile>bin\Debug\net45\Bogosoft.Qualification.xml</DocumentationFile>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net45|AnyCPU'">
+		<DocumentationFile>bin\Release\net45\Bogosoft.Qualification.xml</DocumentationFile>
 	</PropertyGroup>
 </Project>
